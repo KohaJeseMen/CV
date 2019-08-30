@@ -1,10 +1,13 @@
 # Hướng dẫn chi tiết từng bước cài đặt Git cho Windows
 ## Bước 1: Tải tập tin cài đặt
 Có nhiều cách để đến với trang chủ của Git, bạn có thể tìm kiếm trên Google và lựa chọn trong kết quả tìm kiếm hoặc đến trực tiếp trang chủ bằng cách gõ vào thanh điều hướng trình duyệt đường dẫn
+
 > **https://git-scm.com/**
 
 Bấm vào nút **`Download 2.23.0 for Windows`** để tải tập tin cài đặt về.
+
 *Lưu ý rằng con số __2.23.0__ là phiên bản __Git__ hiện tại được phát hành, nó có thể bị thay đổi bởi các phiên bản mới hơn. Xem thêm ảnh minh họa bên dưới*.
+
 ![alt text](https://s3-ap-southeast-1.amazonaws.com/kipalog.com/febqf8cngp_image.png)
 
 Hệ thống trang tải của Git sẽ tự động gửi tập tin cài đặt phù hợp với hệ điều hành Windows hiện tại của bạn. Ngoài ra, bạn còn có thể tải thêm các phiên bản khác tùy ý. *Xem thêm ảnh minh họa bên dưới.*
@@ -16,7 +19,9 @@ Sau quá trình chờ tải về, bạn sẽ có được một tệp thực thi
 **`Git-2.23.0-64-bit.exe`**, trong đó:
 * **2.23.0** đã nói ở trên bước 1 rồi, là phiên bản của Git lúc đó.
 * **64-bit** là kiến trúc mà hệ điều hành Windows của máy đang dùng để cài Git.
+
 *Xem thêm ảnh minh họa bên dưới.*
+
 ![alt text](https://s3-ap-southeast-1.amazonaws.com/kipalog.com/hn5pyxkqo6_image.png)
 
 Thực thi tập tin đó bằng cách `Bấm đôi chuột` hoặc `Bấm chuột phải` lên tệp đó rồi chọn `Open`. Tùy bạn thôi!~
@@ -80,7 +85,7 @@ Nhấn tiếp nút `Next >` nà!
 
 Tiếp theo, lựa chọn chế độ dấu kết thúc dòng (*xuống dòng*). Sở dĩ có lựa chọn này là do dấu xuống dòng trong hệ điều hành *Linux, Unix, MacOS và __Windows__*  là khác nhau.
 
-Chúng ta cứ để mặc định là **Checkout Windows-style, commit Unix-style line endings** để Git tự chuyển qua lại giữa các loại này khi tải mã nguồn lên xuống giữa máy **Windows** của mình và máy chủ lưu trữ **Repository**. *Xem hình ảnh minh họa bên dưới*
+Chúng ta cứ để mặc định là **Checkout Windows-style, commit Unix-style line endings** để Git tự chuyển qua lại giữa các loại này khi tải mã nguồn lên xuống giữa máy **Windows** của mình và máy chủ lưu trữ **Repository**. *Xem hình ảnh minh họa bên dưới.*
 
 Rồi, bấm tiếp nút `Next >` thôi!
 
@@ -100,7 +105,7 @@ Tiếp theo là một số cài đặt về lưu trữ (*cài đặt mở rộng
 
 ![alt text](https://s3-ap-southeast-1.amazonaws.com/kipalog.com/wpdwpaq4k8_image.png)
 
-Cuối cùng, trình cài đặt Git sẽ cho ta chọn chức năng về tương tác, giúp sử dụng khởi chạy nhanh. Thật sự, điều này cũng không cần thiết vì chúng ta không mất quá nhiều thời gian cho việc gõ lệnh tương tác. *Xem hình ảnh minh họa bên dưới*
+Cuối cùng, trình cài đặt Git sẽ cho ta chọn chức năng về tương tác, giúp sử dụng khởi chạy nhanh. Thật sự, điều này cũng không cần thiết vì chúng ta không mất quá nhiều thời gian cho việc gõ lệnh tương tác. *Xem hình ảnh minh họa bên dưới.*
 
 Chọn `Install` để cài đặt Git.
 
