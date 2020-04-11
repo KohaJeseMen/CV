@@ -36,7 +36,7 @@ BigQuery là một công cụ kho phân tích dữ liệu của Google quản l�
     - Cloud SQL - mySQL
     - Cloud SQL - PostgreSQL
 
-![CreateConnection](./CreateConnection.jpg)
+![CreateConnection](./CreateConnection.JPG)
 
 
 
