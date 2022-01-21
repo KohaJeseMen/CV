@@ -1,0 +1,171 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-with, initial-scale=1.0">
+  <title>Random Strings</title>
+</head>
+<body>
+  <style>
+    label {
+      line-height: 1.5;
+    }
+    .indented {
+      margin-left: 1em;
+    }
+  </style>
+  <div>
+    <h3>Settings</h3>
+    <p>
+    <label>
+      Generate strings quantity
+    </label><br>
+    <input class="indented" type="number" id="quantity" value="10">
+    </p>
+    <p>
+    <label>
+      Each string should be characters long
+    </label><br>
+    <input class="indented" type="number" id="eachStringLong" value="8">
+    </p>
+    <p>
+      Which characters are allowed to occur in the string?
+      <br>
+      <label>
+      <input class="indented" type="checkbox" id="haveDigits" checked>
+        Numberic digits (0-9)
+      </label><br>
+      <label>
+      <input class="indented" type="checkbox" id="haveUppercaseLetters">
+        Uppercase letters (A-Z)
+      </label><br>
+      <label>
+      <input class="indented" type="checkbox" id="haveLowercaseLetters">
+        Lowercase letters (a-z)
+      </label><br>
+      <input class="indented" type="checkbox" id="haveUppercaseHexaLetters">
+        Uppercase hexa letters (A-F)
+      </label><br>
+      <label>
+      <input class="indented" type="checkbox" id="haveLowercaseHexaLetters">
+        Lowercase hexa letters (a-f)
+      </label>
+    </p>
+    <p>
+      Do you want if the first digit in string will be exclude number zero (0)?
+      <br>
+      <label>
+      <input class="indented" type="radio" name="firstDigitExcludeZero" id="isFirstDigitExcludeZero" checked>
+        Yes
+      </label><br>
+      <label>
+      <input class="indented" type="radio" name="firstDigitExcludeZero" id="isFirstDigitIncludeZero">
+        No
+      </label>
+    </p>
+    <p>
+      Do you want each string to be unique?
+      <br>
+      <label>
+      <input class="indented" type="radio" name="uniqueOrDice" id="isUnique" checked>
+        Each string should be unique (like raffle tickets)
+      </label><br>
+      <label>
+      <input class="indented" type="radio" name="uniqueOrDice" id="isDice">
+        Identical strings are allowed (like dice rolls)
+      </label>
+    </p>
+    <p>
+      <button onclick="getStrings()"> Get strings </button> <button onclick="reset()">Reset</button>
+    </p>
+    <p>
+      Result
+      <br>
+      <textarea id="result" style="width: 300px; height: 4em"></textarea>
+    </p>
+  </div>
+</body>
+<script>
+  let digits = "0123456789";
+  let upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
+  let upperCaseHexaLetters = "ABCDEF";
+  let lowerCaseHexaLetters = "abcdef";
+  function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+  }
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+  }
+  function reset(){
+    document.querySelector("#result").value = "";
+  }
+  function getStrings(){
+    var resultString = "";
+    let quantity = Number(document.querySelector('#quantity').value);
+    let eachStringLong = Number(document.querySelector('#eachStringLong').value);
+    let haveDigits = document.querySelector('#haveDigits').checked;
+    let haveUppercaseLetters = document.querySelector('#haveUppercaseLetters').checked;
+    let haveLowercaseLetters = document.querySelector('#haveLowercaseLetters').checked;
+    let haveUppercaseHexaLetters = document.querySelector('#haveUppercaseHexaLetters').checked;
+    let haveLowercaseHexaLetters = document.querySelector('#haveLowercaseHexaLetters').checked;
+    let isFirstDigitExcludeZero = document.querySelector('#isFirstDigitExcludeZero').checked;
+    let isUnique = document.querySelector('#isUnique').checked;
+    
+    console.log('quantity: '+quantity);
+    console.log('eachStringLong: '+eachStringLong);
+    console.log('haveDigits: '+haveDigits);
+    console.log('haveUppercaseLetters: '+haveUppercaseLetters);
+    console.log('haveLowercaseLetters: '+haveLowercaseLetters);
+    console.log('isUnique: '+isUnique);
+    
+    var pattern = "";
+    if(haveDigits) {
+      pattern = pattern.concat(digits);
+    }
+    if(haveUppercaseLetters) {
+      pattern = pattern.concat(upperCaseLetters);
+    }
+    if(haveLowercaseLetters) {
+      pattern = pattern.concat(lowerCaseLetters);
+    }
+    if(haveUppercaseHexaLetters) {
+      pattern = pattern.concat(upperCaseHexaLetters);
+    }
+    if(haveLowercaseHexaLetters) {
+      pattern = pattern.concat(lowerCaseHexaLetters);
+    }
+    
+    console.log(pattern);
+    
+    var result = "";
+    var qty = 0;
+    do {
+      var string = "";
+      for(var i=0; i<eachStringLong; i++) {
+        let character = "";
+        if(isFirstDigitExcludeZero && i==0) {
+          var firstPattern = pattern.replaceAll('0','');
+          character = firstPattern[getRandomIntInclusive(0,firstPattern.length-1)];
+        } else {
+          character = pattern[getRandomIntInclusive(0,pattern.length-1)];
+        }
+        string = string.concat(character);
+      }
+      if(isUnique) {
+        if(!result.includes(string)) {
+          result = result.concat(string, '\r\n');
+          qty += 1;
+        }
+      } else {
+        result = result.concat(string, '\r\n');
+        qty += 1;
+      }
+    } while (qty < quantity);
+    document.querySelector('#result').value = result;
+  }
+</script>
+<html>
